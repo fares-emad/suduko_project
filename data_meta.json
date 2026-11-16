@@ -1,0 +1,10 @@
+{
+  "seed": 0,
+  "source": "mnist",
+  "img_side": 28,
+  "note": "MNIST, official test set untouched; digit 0 dropped",
+  "n_train": 45053,
+  "n_val": 9024,
+  "n_test": 9020,
+  "n_pixels": 784
+}

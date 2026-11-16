@@ -1,0 +1,16 @@
+{
+  "data_source": "mnist",
+  "temperature": 1.4393550683497272,
+  "network": {
+    "test_accuracy": 0.9778270509977827,
+    "nll_raw": 0.08234670254924993,
+    "nll_calibrated": 0.07373086341791105,
+    "ece_raw": 0.008546248111375825,
+    "ece_calibrated": 0.0035225465799050173
+  },
+  "logistic_regression_baseline": {
+    "test_accuracy": 0.9208425720620843,
+    "nll": 0.28000635672436663,
+    "ece": 0.006724579063658356
+  }
+}

@@ -1,0 +1,63 @@
+=== INPUT  (data source: sklearn_digits, seed 7) ===
+true puzzle: 30 givens; injected hard digits at ['r1c6', 'r6c8']
+
+What the network read (* = differs from the true digit):
+. . 4 | . 3 4* | . 7 1
+7 . . | 2 . . | 5 . 5*
+. . 8 | . . . | 4 2 .
+------+-------+------
+6 . . | 9 . . | 2 . 7
+8 . . | . . 2 | 1 . .
+. . . | 6 1 5 | . 1* .
+------+-------+------
+3 . 1 | . 2 . | . . .
+. . . | . . . | . . .
+4 7 . | 3 . 6 | . . .
+
+actual misreads: [('r1c6', 8, 4), ('r2c9', 8, 5), ('r6c8', 8, 1)]
+
+=== AC-3 ON THE FIRST READING ===
+conflict detected -> digit 4 appears twice in row 1 (r1c3 and r1c6)  (AC-3 revisions: 45)
+
+=== SEARCH (UCS) ===
+expanded=39  generated=855  goal tests=39  (CSP calls=1, rejected by quick conflict scan=38)
+first expansions (g = cost so far):
+  #1   g=0.000  (first reading)
+  #2   g=0.072  r6c8->8
+  #3   g=1.192  r3c3->9
+  #4   g=1.264  r3c3->9, r6c8->8
+  #5   g=1.482  r1c6->8
+  #6   g=1.554  r1c6->8, r6c8->8
+  #7   g=1.639  r9c4->8
+  #8   g=1.711  r6c8->8, r9c4->8
+
+RESULT: SOLVED - solved after 3 correction(s), total cost 3.301
+  correction: r1c6  read 4 -> 8  (cost 1.4818)
+  correction: r2c9  read 5 -> 8  (cost 1.7476)
+  correction: r6c8  read 1 -> 8  (cost 0.0719)
+
+Solved grid:
+9 2 4 | 5 3 8 | 6 7 1
+7 3 6 | 2 4 1 | 5 9 8
+1 5 8 | 7 6 9 | 4 2 3
+------+-------+------
+6 1 5 | 9 8 3 | 2 4 7
+8 9 3 | 4 7 2 | 1 6 5
+2 4 7 | 6 1 5 | 3 8 9
+------+-------+------
+3 6 1 | 8 2 7 | 9 5 4
+5 8 2 | 1 9 4 | 7 3 6
+4 7 9 | 3 5 6 | 8 1 2
+matches the true solution: True
+
+=== CSP PRUNING (same puzzle, three configurations) ===
+config        assign  backtr  FC prun  AC3 prun   checks
+BT                68      17        0         0    11327
+BT+FC             61      10      457         0        0
+BT+FC+AC-3        61      10      169       288        0
+
+=== NETWORK-GUIDED CORRECTION  ON vs OFF ===
+OFF (accept first reading): FAILED - no solution
+ON  (UCS corrections):    solved, exact true solution = True
+
+figures: /home/claude/p7_sudoku/results/demo_pipeline.png  /home/claude/p7_sudoku/results/demo_search_csp.png
